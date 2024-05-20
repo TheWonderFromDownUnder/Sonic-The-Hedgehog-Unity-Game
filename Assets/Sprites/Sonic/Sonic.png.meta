@@ -104,7 +104,406 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sonic_Idle
+      name: Sonic_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7bf2545f16fe3043b0049417f8170f9
+      internalID: -1580358144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5acd7460bb79b4b46b6ac7635b1e4c3e
+      internalID: -1414507167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82c3333713669ae46b10045382513ce6
+      internalID: -1144894177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3952711c26f9e449c85d288efcb62f
+      internalID: 395713449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e47f26407c35d34aa1582ef3271d338
+      internalID: -1516061438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c31fe28dff26394c89f1ece3d55569e
+      internalID: 1624395074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_7
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 472
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50cab2ceb5bd924abf500b80b136cff
+      internalID: 293104010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bddcf11650fd0294586888591698c99a
+      internalID: 1248875658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_9
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f621d087def3a441bc41cc699d9adc8
+      internalID: 1827873201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_10
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e2c60ed155935a43956a068a93f20fe
+      internalID: -1787751053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_11
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc70e0aad918eb2479d3f227c9b40e7c
+      internalID: 716832901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_12
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a765685243a5b4f8124a9b5f93eb2e
+      internalID: -995922979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_13
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae5d7a2d8521aa741be349034f65b79f
+      internalID: -1220121709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_14
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 432
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190a26c1cd1f8e34cb434a0018e0d782
+      internalID: 729498492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 392
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824d579765290f3428e17a1e82949984
+      internalID: -2076142244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_16
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 392
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ac5a51cb6b5584f8e44e5add36c8d2
+      internalID: 1904789227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_17
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 392
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ab0e28c3177024b8b63d1f93132dc1
+      internalID: 615798202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_18
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 392
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900c6ac65caede045b9287e70eda545f
+      internalID: 1774747745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 352
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b0672dfc5e526d49a19f8641bd0a159
+      internalID: 968506271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sonic_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +511,14 @@ TextureImporter:
         width: 40
         height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 616d6994edfb19e4da763d5f42fe6712
-      internalID: 1823328045
+      spriteID: a333bbe3980cfee4b983bdbff1ccfbed
+      internalID: -365553205
       vertices: []
       indices: 
       edges: []
@@ -135,7 +534,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sonic_Idle: 1823328045
+      Sonic_6: 1624395074
+      Sonic_13: -1220121709
+      Sonic_0: -365553205
+      Sonic_19: 968506271
+      Sonic_3: -1144894177
+      Sonic_16: 1904789227
+      Sonic_4: 395713449
+      Sonic_11: 716832901
+      Sonic_7: 293104010
+      Sonic_18: 1774747745
+      Sonic_1: -1580358144
+      Sonic_12: -995922979
+      Sonic_14: 729498492
+      Sonic_2: -1414507167
+      Sonic_15: -2076142244
+      Sonic_17: 615798202
+      Sonic_5: -1516061438
+      Sonic_9: 1827873201
+      Sonic_8: 1248875658
+      Sonic_10: -1787751053
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
