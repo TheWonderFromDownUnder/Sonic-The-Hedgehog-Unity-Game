@@ -7,7 +7,9 @@ public class StartMenu : MonoBehaviour
 {
     void Update() {
 
-        if (Input.GetButtonDown(PAP.submitKeyName))
+        bool isSubmitKeyPressed = Input.GetButtonDown(PAP.submitKeyName);
+
+        if (isSubmitKeyPressed == true)
         {
             AudioManager.PlaySound(SoundType.checkpointSound);
             SceneManager.LoadScene(1);

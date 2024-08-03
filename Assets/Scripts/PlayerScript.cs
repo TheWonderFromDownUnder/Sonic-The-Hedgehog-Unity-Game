@@ -9,14 +9,20 @@ public class PlayerScript : MonoBehaviour
     public float groundCheckDistance = 0.1f;
     public float wallRaycastDistance = 0.6f;
     public ContactFilter2D groundCheckFilter;
+    public int Respawn;
+    [SerializeField] private float invulDuration;
+    [SerializeField] private int invulFlashes;
 
     private Rigidbody2D rb;
     private Collider2D collider2d;
+    private SpriteRenderer spriteRend;
     private List<RaycastHit2D> groundHits = new List<RaycastHit2D>();
     private List<RaycastHit2D> wallHits = new List<RaycastHit2D>();
 
     public AudioSource jumpSound;
     public RingManager rm;
+    public ScoreManager sm;
+    public PlayerJumpBehaviour jb;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +30,8 @@ public class PlayerScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider2d = GetComponent<Collider2D>();
         jumpSound = GetComponent<AudioSource>();
+        spriteRend = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,6 +45,7 @@ public class PlayerScript : MonoBehaviour
         // Check and Trigger for On Ground
         bool lastOnGround = animator.GetBool(PAP.isOnGround);
         bool newOnGround = CheckIfOnGround();
+        //bool spinActive = false;
         animator.SetBool(PAP.isOnGround, newOnGround);
 
         // Sets the condition that the player has touched the ground and should switch to the landing state
@@ -52,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         {
             animator.SetTrigger(PAP.JumpTriggerName);
             AudioManager.PlaySound(SoundType.jumpSound);
+            //spinActive = true;
         }
         else
         {
@@ -108,6 +118,7 @@ public class PlayerScript : MonoBehaviour
             animator.SetFloat(PAP.impulseX, 0);
         }
 
+        animator.SetFloat(PAP.velocityX, rb.velocity.x);
         animator.SetFloat(PAP.velocityY, rb.velocity.y);
 
         bool isStopVelocity = animator.GetBool(PAP.stopVelocity);
@@ -135,25 +146,73 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Ring"))
+
+        if (other.gameObject.CompareTag("Ring"))
         {
             AudioManager.PlaySound(SoundType.ringSound);
             Destroy(other.gameObject);
             rm.ringCount++;
+            sm.score += 10;
         }
 
         if(other.gameObject.CompareTag("Finish"))
         {
-            StartCoroutine(wait());
             AudioManager.PlaySound(SoundType.goalSound);
-            SceneManager.LoadScene(0);
+            StartCoroutine(waitFinish());
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("player_jump"))
+            {
+                Destroy(other.gameObject);
+                AudioManager.PlaySound(SoundType.breakSound);
+                sm.score += 100;
+            }
+            else if (rm.ringCount > 0)
+            {
+                StartCoroutine(Invulnerability());
+                rm.ringCount = 0;
+                AudioManager.PlaySound(SoundType.ringlossSound);
+            }
+            else
+            {
+                StartCoroutine(waitDeath());
+                AudioManager.PlaySound(SoundType.deathSound);
+            }
+            
         }
     }
 
-    IEnumerator wait()
+    private IEnumerator waitDeath()
     {
-        yield return new WaitForSeconds(7);
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(1.0f);
+        SceneManager.LoadScene(Respawn);
+        Time.timeScale = 1f;
+    }
+
+    private IEnumerator waitFinish()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(6.0f);
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+    }
+
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(10, 11, true);
+        for (int i = 0; i < invulFlashes; i++)
+        {
+            spriteRend.color = Color.clear;
+            yield return new WaitForSeconds(invulDuration / (invulFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(invulDuration / (invulFlashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(10, 11, false);
     }
 }

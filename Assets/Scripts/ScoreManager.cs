@@ -2,30 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
-
-    public int playerScore;
+    public int score;
     public Text scoreText;
-
-    int score = 0;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     void Start()
     {
-        scoreText.text = "Score " + playerScore.ToString();
+        
     }
 
-    [ContextMenu("Increase Score")]
-    public void addScore()
+    void Update()
     {
-        score += 10;
-        scoreText.text = "Score " + playerScore.ToString();
+        scoreText.text = " " + score.ToString();
     }
 }

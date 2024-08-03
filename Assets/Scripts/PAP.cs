@@ -12,6 +12,7 @@ public class PAP : MonoBehaviour
     public const string forceX = "forceX";
     public const string impulseX = "impulseX";
     public const string impulseY = "impulseY";
+    public const string velocityX = "velocityX";
     public const string velocityY = "velocityY";
     public const string isOnGround = "isOnGround";
     public const string landedOnGround = "landedOnGround";
@@ -19,6 +20,7 @@ public class PAP : MonoBehaviour
     public const string CrouchTriggerName = "crouch";
     public const string LookupTriggerName = "lookup";
     public const string RollTriggerName = "roll";
+    public const string SubmitTriggerName = "submit";
 
     // Used as a trigger, turn off when consumed
     public const string stopVelocity = "stopVelocity";
