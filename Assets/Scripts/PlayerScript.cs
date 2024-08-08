@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     public Animator animator;
-    public float groundCheckDistance = 0.1f;
+    public float groundCheckDistance = 0.2f;
     public float wallRaycastDistance = 0.6f;
     public ContactFilter2D groundCheckFilter;
     public int Respawn;
     [SerializeField] private float invulDuration;
     [SerializeField] private int invulFlashes;
+    [SerializeField] private float trueInvulDuration;
+    [SerializeField] private int trueInvulFlashes;
 
     private Rigidbody2D rb;
     private Collider2D collider2d;
@@ -22,6 +24,7 @@ public class PlayerScript : MonoBehaviour
     public AudioSource jumpSound;
     public RingManager rm;
     public ScoreManager sm;
+    public LivesManager lm;
     public PlayerJumpBehaviour jb;
 
     // Start is called before the first frame update
@@ -32,13 +35,17 @@ public class PlayerScript : MonoBehaviour
         jumpSound = GetComponent<AudioSource>();
         spriteRend = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        lm = GetComponent<LivesManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float moveX = Input.GetAxisRaw(PAP.axisXInput);
+        float moveY = Input.GetAxisRaw(PAP.axisYInput);
+        float velocityX = rb.velocity.x;
         animator.SetFloat(PAP.moveX, moveX);
+        animator.SetFloat(PAP.velocityX, velocityX);
         bool isMoving = !Mathf.Approximately(moveX, 0f);
         animator.SetBool(PAP.isMoving, isMoving);
 
@@ -68,22 +75,31 @@ public class PlayerScript : MonoBehaviour
             animator.ResetTrigger(PAP.JumpTriggerName);
         }
 
-        // Crouch
+        // Crouch and Roll
         bool isCrouchKeyPressed = Input.GetButtonDown(PAP.crouchKeyName);
 
         if (isCrouchKeyPressed)
         {
             animator.SetTrigger(PAP.CrouchTriggerName);
         }
-        else if (isCrouchKeyPressed && moveX < 0.1)
+/*        if (PAP.axisYInput < 0)
         {
-            animator.SetTrigger(PAP.RollTriggerName);
+            animator.SetTrigger(PAP.CrouchTriggerName);
+        }
+*/      if (isCrouchKeyPressed && velocityX > 0.1f)
+        {
+//            animator.SetTrigger(PAP.JumpTriggerName);
+            AudioManager.PlaySound(SoundType.rollSound);
+        }
+        if (isCrouchKeyPressed && velocityX < -0.1f)
+        {
+//            animator.SetTrigger(PAP.JumpTriggerName);
             AudioManager.PlaySound(SoundType.rollSound);
         }
         else
         {
             animator.ResetTrigger(PAP.CrouchTriggerName);
-            animator.ResetTrigger(PAP.RollTriggerName);
+//            animator.ResetTrigger(PAP.JumpTriggerName);
         }
 
         // Lookup
@@ -174,7 +190,7 @@ public class PlayerScript : MonoBehaviour
             }
             else if (rm.ringCount > 0)
             {
-                StartCoroutine(Invulnerability());
+                StartCoroutine(HitInvul());
                 rm.ringCount = 0;
                 AudioManager.PlaySound(SoundType.ringlossSound);
             }
@@ -182,9 +198,63 @@ public class PlayerScript : MonoBehaviour
             {
                 StartCoroutine(waitDeath());
                 AudioManager.PlaySound(SoundType.deathSound);
-            }
-            
+//                lm.livesCount--;
+            }   
         }
+
+        if (other.gameObject.CompareTag("ItemBox"))
+        {
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("player_jump"))
+            {
+                Destroy(other.gameObject);
+                AudioManager.PlaySound(SoundType.breakSound);
+                StartCoroutine(waitItemBox());
+                AudioManager.PlaySound(SoundType.ringSound);
+                rm.ringCount += 10;
+                sm.score += 100;
+            }
+        }
+
+        if (other.gameObject.CompareTag("InvulBox"))
+        {
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("player_jump"))
+            {
+                Destroy(other.gameObject);
+                AudioManager.PlaySound(SoundType.breakSound);
+                StartCoroutine(TrueInvul());
+                AudioManager.PlaySound(SoundType.invulSound);
+            }
+        }
+
+        if (other.gameObject.CompareTag("DeathPit"))
+        {
+            StartCoroutine(waitDeath());
+            AudioManager.PlaySound(SoundType.deathSound);
+        }
+
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            if (rm.ringCount > 0)
+            {
+                StartCoroutine(HitInvul());
+                rm.ringCount = 0;
+                AudioManager.PlaySound(SoundType.spikeSound);
+                AudioManager.PlaySound(SoundType.ringlossSound);
+            }
+            else
+            {
+                StartCoroutine(waitDeath());
+                AudioManager.PlaySound(SoundType.spikeSound);
+//                lm.livesCount--;
+            }
+        }
+    }
+
+    private IEnumerator waitItemBox()
+    {
+        yield return new WaitForSeconds(4.0f);
     }
 
     private IEnumerator waitDeath()
@@ -203,7 +273,7 @@ public class PlayerScript : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private IEnumerator Invulnerability()
+    private IEnumerator HitInvul()
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);
         for (int i = 0; i < invulFlashes; i++)
@@ -212,6 +282,19 @@ public class PlayerScript : MonoBehaviour
             yield return new WaitForSeconds(invulDuration / (invulFlashes * 2));
             spriteRend.color = Color.white;
             yield return new WaitForSeconds(invulDuration / (invulFlashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(10, 11, false);
+    }
+
+    private IEnumerator TrueInvul()
+    {
+        Physics2D.IgnoreLayerCollision(10, 11, true);
+        for (int i = 0; i < trueInvulFlashes; i++)
+        {
+            spriteRend.color = Color.clear;
+            yield return new WaitForSeconds(trueInvulDuration / (trueInvulFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(trueInvulDuration / (trueInvulFlashes * 2));
         }
         Physics2D.IgnoreLayerCollision(10, 11, false);
     }

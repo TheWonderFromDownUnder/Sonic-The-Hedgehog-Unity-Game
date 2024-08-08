@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 462940617770825910}
   - component: {fileID: 462940617770825909}
   - component: {fileID: 7925307868467515135}
-  m_Layer: 0
+  - component: {fileID: 1413316175}
+  m_Layer: 9
   m_Name: Ring
   m_TagString: Ring
   m_Icon: {fileID: 0}
@@ -221,3 +222,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1413316175
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462940617770825905}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9874dee21b92d1442914a03ac3ad1f73, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

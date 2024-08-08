@@ -19,7 +19,6 @@ public class PAP : MonoBehaviour
     public const string JumpTriggerName = "jump";
     public const string CrouchTriggerName = "crouch";
     public const string LookupTriggerName = "lookup";
-    public const string RollTriggerName = "roll";
     public const string SubmitTriggerName = "submit";
 
     // Used as a trigger, turn off when consumed

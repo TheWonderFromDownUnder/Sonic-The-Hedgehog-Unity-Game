@@ -18,6 +18,8 @@ public enum SoundType
         ringlossSound,
         deathSound,
         breakSound,
+        spikeSound,
+        invulSound,
     }
 
 [RequireComponent(typeof(AudioSource))]
